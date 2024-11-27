@@ -4,9 +4,10 @@ import com.example.User.Service.dto.request.LoginRequest;
 import com.example.User.Service.entity.User;
 import com.example.User.Service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
@@ -43,5 +44,10 @@ public class UserController {
             return ResponseEntity.ok("Delete successful");
         }
         return ResponseEntity.status(404).body("User not found");
+    }
+
+    @GetMapping("/get-user")
+    public List<User> getAllUser(){
+        return userService.getAllUser();
     }
 }

@@ -1,7 +1,9 @@
 package com.example.Product.Service.dto.request;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -10,6 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class CreateProductRequest {
     private String name;
     private String description;
@@ -19,6 +22,6 @@ public class CreateProductRequest {
     private double price;
     private double discountPrice;
     private int discount;
-    private Date createdDate;
+    private LocalDateTime createdDate;
     private String createdBy;
 }

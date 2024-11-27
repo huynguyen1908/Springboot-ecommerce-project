@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
@@ -50,6 +51,9 @@ public class UserService {
             return true;
         }
         return false;
+    }
 
+    public List<User> getAllUser(){
+        return userRepository.findAll();
     }
 }

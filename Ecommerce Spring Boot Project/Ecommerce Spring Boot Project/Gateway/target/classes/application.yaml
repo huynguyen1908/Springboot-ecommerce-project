@@ -3,17 +3,24 @@ server:
 spring:
   application:
     name: api-gateway
+  main:
+    web-application-type: reactive
 
   cloud:
     gateway:
       routes:
-        - id: user-service
-          uri: lb://user-service
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
           predicates:
             - Path=/api/user/**
+        - id: USER-SERVICE
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/v1/products/**
       discovery:
         locator:
           enabled: true
+          lower-case-service-id: true
 
 eureka:
   client:
